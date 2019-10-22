@@ -9,6 +9,7 @@ defmodule Roman do
     {50, "L"},
     {40, "XL"},
     {10, "X"},
+    {9, "IX"},
     {5, "V"},
     {4, "IV"},
     {1, "I"}
@@ -24,7 +25,7 @@ defmodule Roman do
     roman <> convert(number - arabic, [{arabic, roman} | tail])
   end
 
-  defp convert(number, [{arabic, roman} | tail]) when number < arabic do
+  defp convert(number, [{arabic, _roman} | tail]) when number < arabic do
     convert(number, tail)
   end
 end
