@@ -1,5 +1,6 @@
 defmodule Chop do
     
+    @spec chop(integer, {integer}) :: {:ok, integer} | :not_found
     def chop(_number, {}) do
         :not_found
     end
