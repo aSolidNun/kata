@@ -7,6 +7,8 @@ defmodule Data do
         |> Enum.map(&parse_temp_line/1)
         |> Enum.filter(&valid_temp_data?/1)
         |> Enum.reduce(&min_temp/2)
+        |> format()
+        |> IO.puts()
     end
 
     def parse_temp_line([index, max, min | _]) do
@@ -19,5 +21,7 @@ defmodule Data do
 
     defp min_temp(e = {_, {e_max, _}, {e_min, _}}, {_, {a_max, _}, {a_min, _}}) when (e_max - e_min) < (a_max - a_min), do: e
     defp min_temp(_e, a), do: a
+
+    defp format({day, _, _}), do: day
 
 end
